@@ -1,6 +1,7 @@
  
 markdown
-# 📅 Système de Gestion d'Événements (JavaFX)
+# **Réalisé par NJIKI TCHOUBIA MIGUEL 3GI 22P533**
+📅 Système de Gestion d'Événements (JavaFX)
 
 Application de gestion d'événements (conférences/concerts) avec interface graphique JavaFX, persistance des données et notifications.
 
