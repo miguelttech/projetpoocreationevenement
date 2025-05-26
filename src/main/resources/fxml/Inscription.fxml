@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox fx:id="root" spacing="20" alignment="CENTER" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.InscriptionController" stylesheets="@../css/style.css">
+    <stylesheets>
+        <URL value="@../css/style.css" />
+    </stylesheets>
+
+    <!-- En-tête stylisé -->
+    <HBox alignment="CENTER" style="-fx-background-color: #4CAF50; -fx-padding: 15;">
+        <Label text="Inscription à un Événement" style="-fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold;" />
+    </HBox>
+
+    <!-- Formulaire -->
+    <GridPane hgap="10" vgap="15" style="-fx-padding: 20; -fx-background-color: #f9f9f9; -fx-border-radius: 5; -fx-border-color: #ddd;">
+        <Label text="Nom complet:" style="-fx-font-weight: bold;" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+        <TextField fx:id="nomField" promptText="Votre nom" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+        <Label text="Email:" style="-fx-font-weight: bold;" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+        <TextField fx:id="emailField" promptText="exemple@email.com" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+        <Label text="Événement:" style="-fx-font-weight: bold;" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+        <ComboBox fx:id="evenementCombo" promptText="Choisir un événement" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+        <Button text="S'inscrire" onAction="#validerInscription" styleClass="success-button" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.halignment="RIGHT" />
+    </GridPane>
+
+    <columnConstraints>
+        <ColumnConstraints halignment="RIGHT" />
+        <ColumnConstraints hgrow="SOMETIMES" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+    </rowConstraints>
+</VBox>

@@ -1,0 +1,76 @@
+/* style.css */
+.styled-button {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-color: #2196F3; /* Bleu */
+    -fx-text-fill: black;
+    -fx-padding: 12px 24px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+}
+
+/* Effet au survol */
+.styled-button:hover {
+    -fx-background-color: #1976D2; /* Bleu plus foncé */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 2);
+}
+
+/* Effet lors du clic */
+.styled-button:pressed {
+    -fx-background-color: #0D47A1; /* Bleu très foncé */
+    -fx-translate-y: 1px; /* Légère translation vers le bas */
+}
+
+/* Style de la liste */
+.list-view {
+    -fx-font-size: 14px;
+    -fx-border-color: #E0E0E0;
+}
+/*style du formulaire pour cree un evenement */
+.main-container {
+    -fx-padding: 30;
+    -fx-background-color: #F9F9F9;
+    -fx-font-family: "Segoe UI", sans-serif;
+}
+
+.header-box {
+    -fx-background-color: #2196F3;
+    -fx-padding: 10;
+    -fx-border-color: #0D47A1;
+    -fx-border-width: 0 0 3 0;
+    -fx-border-style: solid;
+}
+
+.title-label {
+    -fx-font-size: 22px;
+    -fx-text-fill: yellow;
+    -fx-font-weight: bold;
+}
+
+.submit-button {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 10 20;
+    -fx-background-radius: 6px;
+}
+/* Style du tableau */
+.table-view {
+    -fx-base: #f5f5f5;
+    -fx-control-inner-background: white;
+    -fx-max-height: 300;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #f9f9f9;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #2196F3;
+    -fx-text-background-color: white;
+}
+
+.submit-button:hover {
+    -fx-background-color: #388E3C;
+}

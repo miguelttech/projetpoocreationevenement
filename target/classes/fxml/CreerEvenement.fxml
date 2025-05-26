@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="20" style="-fx-padding: 20;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CreerEvenementController">
+
+    <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Créer un nouvel événement" />
+
+    <GridPane hgap="10" vgap="10">
+        <Label text="Nom:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+        <TextField fx:id="nomField" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+        <Label text="Date:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+        <DatePicker fx:id="datePicker" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+        <Label text="Lieu:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+        <TextField fx:id="lieuField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+        <Label text="Capacité:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+        <TextField fx:id="capaciteField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+        <Label text="Type:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+        <ComboBox fx:id="typeComboBox" promptText="Type d'even" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+      <columnConstraints>
+         <ColumnConstraints />
+         <ColumnConstraints />
+      </columnConstraints>
+      <rowConstraints>
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+      </rowConstraints>
+    </GridPane>
+
+    <!-- Champs Conférence -->
+    <VBox fx:id="conferenceFields" spacing="10" visible="false">
+        <Label style="-fx-font-weight: bold;" text="Détails Conférence" />
+        <TextField fx:id="themeField" promptText="Thème de la conférence" />
+    </VBox>
+
+    <!-- Champs Concert -->
+    <VBox fx:id="concertFields" spacing="10" visible="false">
+        <Label style="-fx-font-weight: bold;" text="Détails Concert" />
+        <TextField fx:id="artisteField" promptText="Nom de l'artiste" />
+        <TextField fx:id="genreField" promptText="Genre musical" />
+    </VBox>
+
+    <Button onAction="#validerFormulaire" style="-fx-font-size: 14px; -fx-padding: 5 15;" text="Valider" />
+</VBox>
