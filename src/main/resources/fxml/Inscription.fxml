@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox fx:id="root" spacing="20" alignment="CENTER" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.InscriptionController" stylesheets="@../css/style.css">
+
+    <!-- En-tête stylisé -->
+    <HBox alignment="CENTER" style="-fx-background-color: #4CAF50; -fx-padding: 15; -fx-background-radius: 5;">
+        <Label text="✨ Inscription à un Événement ✨" style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;" />
+    </HBox>
+
+    <!-- Formulaire -->
+    <VBox spacing="15" style="-fx-padding: 25; -fx-background-color: #f9f9f9; -fx-border-radius: 10; -fx-border-color: #ddd; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+
+        <!-- Nom -->
+        <VBox spacing="5">
+            <Label text="Nom complet *" style="-fx-font-weight: bold; -fx-text-fill: #333;" />
+            <TextField fx:id="nomField" promptText="Entrez votre nom complet"
+                       style="-fx-padding: 10; -fx-border-radius: 5; -fx-background-radius: 5;" />
+        </VBox>
+
+        <!-- Email -->
+        <VBox spacing="5">
+            <Label text="Adresse email *" style="-fx-font-weight: bold; -fx-text-fill: #333;" />
+            <TextField fx:id="emailField" promptText="exemple@email.com"
+                       style="-fx-padding: 10; -fx-border-radius: 5; -fx-background-radius: 5;" />
+        </VBox>
+
+        <!-- Événement -->
+        <VBox spacing="5">
+            <Label text="Sélectionner un événement *" style="-fx-font-weight: bold; -fx-text-fill: #333;" />
+            <ComboBox fx:id="evenementCombo" promptText="Choisir un événement..."
+                      prefWidth="300" style="-fx-padding: 8;" />
+        </VBox>
+
+        <!-- Boutons -->
+        <HBox spacing="15" alignment="CENTER" style="-fx-padding: 15 0 0 0;">
+            <Button text="Annuler" onAction="#annuler"
+                    style="-fx-background-color: #f44336; -fx-text-fill: white; -fx-padding: 10 20; -fx-background-radius: 5; -fx-font-weight: bold;" />
+            <Button text="✅ S'inscrire" onAction="#validerInscription"
+                    style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-padding: 10 20; -fx-background-radius: 5; -fx-font-weight: bold;" />
+        </HBox>
+
+        <!-- Note -->
+        <Label text="* Champs obligatoires" style="-fx-text-fill: #666; -fx-font-size: 12px; -fx-font-style: italic;" />
+    </VBox>
+</VBox>

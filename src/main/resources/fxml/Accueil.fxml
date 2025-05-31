@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+
+<VBox spacing="20" xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controllers.AccueilController"
+      style="-fx-padding: 20;">
+
+    <Label text="🎯 Gestion des Événements" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2196F3;"/>
+
+    <!-- Tableau des événements avec plus de style -->
+    <VBox spacing="10">
+        <Label text="📋 Liste des Événements" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+
+        <TableView fx:id="tableauEvenements" style="-fx-font-size: 12px;">
+            <columns>
+                <TableColumn text="Nom" prefWidth="180">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="nom" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn text="Date" prefWidth="150">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="date" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn text="Lieu" prefWidth="120">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="lieu" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn text="Capacité" prefWidth="80">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="capaciteMax" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn text="Inscrits" prefWidth="80">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="nombreParticipants" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn text="Type" prefWidth="100">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="type" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn text="Détails" prefWidth="150">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="details" />
+                    </cellValueFactory>
+                </TableColumn>
+            </columns>
+        </TableView>
+    </VBox>
+
+    <!-- Section des boutons organisée en deux lignes -->
+    <VBox spacing="15">
+        <!-- Première ligne : Actions principales -->
+        <HBox spacing="15" alignment="CENTER">
+            <Button text="➕ Créer un événement" onAction="#ouvrirFormulaireCreation"
+                    style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 12 20; -fx-background-radius: 8; -fx-font-size: 14px;"/>
+
+            <Button text="📝 S'inscrire à un événement" onAction="#ouvrirInscription"
+                    style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 12 20; -fx-background-radius: 8; -fx-font-size: 14px;"/>
+        </HBox>
+
+        <!-- Deuxième ligne : Actions de gestion -->
+        <HBox spacing="15" alignment="CENTER">
+            <Button text="👥 Voir les participants" onAction="#voirParticipants"
+                    style="-fx-background-color: #FF9800; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 12 20; -fx-background-radius: 8; -fx-font-size: 14px;"/>
+
+            <Button text="🗑️ Supprimer l'événement" onAction="#supprimerEvenement"
+                    style="-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 12 20; -fx-background-radius: 8; -fx-font-size: 14px;"/>
+
+            <Button text="🔄 Actualiser" onAction="#rafraichirListeEvenements"
+                    style="-fx-background-color: #9C27B0; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 12 20; -fx-background-radius: 8; -fx-font-size: 14px;"/>
+        </HBox>
+    </VBox>
+
+    <!-- Information -->
+    <Label text="💡 Sélectionnez un événement dans le tableau pour voir ses participants ou le supprimer"
+           style="-fx-text-fill: #666; -fx-font-style: italic; -fx-font-size: 12px;"/>
+</VBox>
