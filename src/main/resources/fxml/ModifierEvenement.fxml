@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="20" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ModifierEvenementController" stylesheets="@../css/style.css">
+
+    <!-- En-tête stylisé -->
+    <HBox alignment="CENTER" style="-fx-background-color: #FF9800; -fx-padding: 15; -fx-background-radius: 8;">
+        <Label text="✏️ Modifier un Événement" style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;" />
+    </HBox>
+
+    <!-- Formulaire principal -->
+    <VBox spacing="20" style="-fx-padding: 25; -fx-background-color: #f9f9f9; -fx-border-radius: 10; -fx-border-color: #ddd; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+
+        <!-- Informations de base -->
+        <VBox spacing="15">
+            <Label text="📋 Informations générales" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+
+            <GridPane hgap="15" vgap="15">
+                <columnConstraints>
+                    <ColumnConstraints minWidth="100" prefWidth="120"/>
+                    <ColumnConstraints prefWidth="250"/>
+                </columnConstraints>
+
+                <Label text="Nom *" style="-fx-font-weight: bold; -fx-text-fill: #333;" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                <TextField fx:id="nomField" promptText="Nom de l'événement"
+                           style="-fx-padding: 8; -fx-border-radius: 5; -fx-background-radius: 5;"
+                           GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                <Label text="Date *" style="-fx-font-weight: bold; -fx-text-fill: #333;" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                <DatePicker fx:id="datePicker"
+                            style="-fx-padding: 8; -fx-border-radius: 5; -fx-background-radius: 5;"
+                            GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                <Label text="Lieu *" style="-fx-font-weight: bold; -fx-text-fill: #333;" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                <TextField fx:id="lieuField" promptText="Lieu de l'événement"
+                           style="-fx-padding: 8; -fx-border-radius: 5; -fx-background-radius: 5;"
+                           GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                <Label text="Capacité *" style="-fx-font-weight: bold; -fx-text-fill: #333;" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                <TextField fx:id="capaciteField" promptText="Nombre maximum de participants"
+                           style="-fx-padding: 8; -fx-border-radius: 5; -fx-background-radius: 5;"
+                           GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+                <Label text="Type *" style="-fx-font-weight: bold; -fx-text-fill: #333;" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+                <ComboBox fx:id="typeComboBox" promptText="Sélectionner le type"
+                          style="-fx-padding: 8;"
+                          GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            </GridPane>
+        </VBox>
+
+        <Separator />
+
+        <!-- Champs spécifiques à la Conférence -->
+        <VBox fx:id="conferenceFields" spacing="10" visible="false">
+            <Label text="🎤 Détails de la Conférence" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #2196F3;" />
+            <VBox spacing="5">
+                <Label text="Thème *" style="-fx-font-weight: bold; -fx-text-fill: #333;" />
+                <TextField fx:id="themeField" promptText="Thème principal de la conférence"
+                           style="-fx-padding: 8; -fx-border-radius: 5; -fx-background-radius: 5;" />
+            </VBox>
+        </VBox>
+
+        <!-- Champs spécifiques au Concert -->
+        <VBox fx:id="concertFields" spacing="10" visible="false">
+            <Label text="🎵 Détails du Concert" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #E91E63;" />
+            <VBox spacing="10">
+                <VBox spacing="5">
+                    <Label text="Artiste *" style="-fx-font-weight: bold; -fx-text-fill: #333;" />
+                    <TextField fx:id="artisteField" promptText="Nom de l'artiste ou du groupe"
+                               style="-fx-padding: 8; -fx-border-radius: 5; -fx-background-radius: 5;" />
+                </VBox>
+                <VBox spacing="5">
+                    <Label text="Genre musical *" style="-fx-font-weight: bold; -fx-text-fill: #333;" />
+                    <TextField fx:id="genreField" promptText="Genre musical (Rock, Pop, Jazz...)"
+                               style="-fx-padding: 8; -fx-border-radius: 5; -fx-background-radius: 5;" />
+                </VBox>
+            </VBox>
+        </VBox>
+
+        <!-- Boutons d'action -->
+        <HBox spacing="15" alignment="CENTER" style="-fx-padding: 20 0 0 0;">
+            <Button text="❌ Annuler" onAction="#annuler"
+                    style="-fx-background-color: #757575; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 12 25; -fx-background-radius: 6; -fx-font-size: 14px;"/>
+
+            <Button text="✅ Enregistrer les modifications" onAction="#validerModification"
+                    style="-fx-background-color: #FF9800; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 12 25; -fx-background-radius: 6; -fx-font-size: 14px;"/>
+        </HBox>
+
+        <!-- Note -->
+        <Label text="* Champs obligatoires | ⚠️ La capacité ne peut pas être inférieure au nombre de participants actuels"
+               style="-fx-text-fill: #666; -fx-font-size: 11px; -fx-font-style: italic;" />
+    </VBox>
+
+    <padding>
+        <Insets bottom="20" left="20" right="20" top="20" />
+    </padding>
+</VBox>

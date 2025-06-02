@@ -58,6 +58,40 @@ public class AccueilController implements Initializable {
     }
 
     @FXML
+    public void modifierEvenement() {
+        Evenement evenementSelectionne = tableauEvenements.getSelectionModel().getSelectedItem();
+
+        if (evenementSelectionne == null) {
+            showAlert("Sélection requise",
+                    "Veuillez d'abord sélectionner un événement dans le tableau pour le modifier.",
+                    AlertType.WARNING);
+            return;
+        }
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ModifierEvenement.fxml"));
+            Parent root = loader.load();
+
+            // Passer l'événement sélectionné au contrôleur
+            ModifierEvenementController controller = loader.getController();
+            controller.setEvenement(evenementSelectionne);
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("✏️ Modifier l'événement - " + evenementSelectionne.getNom());
+            stage.setResizable(false);
+
+            // Rafraîchir après fermeture
+            stage.setOnHidden(e -> rafraichirListeEvenements());
+            stage.show();
+
+        } catch (IOException e) {
+            showAlert("Erreur", "Erreur lors de l'ouverture du formulaire de modification", AlertType.ERROR);
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
     public void ouvrirInscription() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Inscription.fxml"));
@@ -144,7 +178,7 @@ public class AccueilController implements Initializable {
         if (result.isPresent() && result.get() == buttonTypeOui) {
             try {
                 // Supprimer l'événement
-               // GestionEvenements.getInstance().supprimerEvenement(evenementSelectionne.getId());
+                GestionEvenements.getInstance().getEvenements().remove(evenementSelectionne.getId());
 
                 // Rafraîchir la liste
                 rafraichirListeEvenements();
@@ -161,6 +195,42 @@ public class AccueilController implements Initializable {
                 e.printStackTrace();
             }
         }
+    }
+
+    @FXML
+    public void voirStatistiques() {
+        int totalEvenements = GestionEvenements.getInstance().getEvenements().size();
+        int totalParticipants = GestionEvenements.getInstance().getEvenements().values()
+                .stream()
+                .mapToInt(e -> e.getParticipants().size())
+                .sum();
+
+        long evenementsConference = GestionEvenements.getInstance().getEvenements().values()
+                .stream()
+                .filter(e -> e.getType().equals("Conférence"))
+                .count();
+
+        long evenementsConcert = GestionEvenements.getInstance().getEvenements().values()
+                .stream()
+                .filter(e -> e.getType().equals("Concert"))
+                .count();
+
+        String message = String.format(
+                "📊 STATISTIQUES GÉNÉRALES\n\n" +
+                        "🎯 Total des événements : %d\n" +
+                        "👥 Total des participants : %d\n\n" +
+                        "📋 RÉPARTITION PAR TYPE :\n" +
+                        "🎤 Conférences : %d\n" +
+                        "🎵 Concerts : %d\n\n" +
+                        "📈 Moyenne de participants par événement : %.1f",
+                totalEvenements,
+                totalParticipants,
+                evenementsConference,
+                evenementsConcert,
+                totalEvenements > 0 ? (double) totalParticipants / totalEvenements : 0.0
+        );
+
+        showAlert("Statistiques", message, AlertType.INFORMATION);
     }
 
     private void showAlert(String title, String message, AlertType type) {
